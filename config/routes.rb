@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "users#new"
 
-  resources :users, only: [ :new, :create ]
+  resources :users, only: [ :new, :create, :edit, :update ]
 end

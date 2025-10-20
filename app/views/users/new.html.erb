@@ -1,11 +1,33 @@
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<h2>New user</h2>
 <%= form_with model: @user do |form|%>
+    <div>
     <%= form.label :username, "Username"%>
     <%= form.text_field :username, value: "MyCoolUserName"%>
+    </div>
+    <div>
     <%= form.label :email, "Email"%>
     <%= form.email_field :email , placeholder: "example@example.com" %>
+    </div>
+    <div>
     <%= form.label :password, "Password"%>
     <%= form.password_field :password %>
-    <%= form.submit "Submit" %>
+    </div>
+    
+    <div><%= form.submit "Submit" %></div>
+    
 <%end%>
 <%# <form action="/users" accept-charset="UTF-8" method="POST"> %>
     <%# <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>
